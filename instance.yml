@@ -45,12 +45,12 @@ Parameters:
   SteamPassword:
     Type: AWS::SSM::Parameter::Value<String>
     Description: Password for Steam
-    Default: STEAM_PASSWORD
+    Default: "{{resolve:ssm-secure:STEAM_PASSWORD:1}}"
 
   ServerPassword:
     Type: AWS::SSM::Parameter::Value<String>
     Description: Password for server
-    Default: 7DAYS_PASSWORD
+    Default: "{{resolve:ssm-secure:7DAYS_PASSWORD:1}}"
 
   WorldGenSeed:
     Type: String
