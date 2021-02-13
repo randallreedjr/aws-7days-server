@@ -11,7 +11,7 @@ Parameters:
     Description: EC2 instance type
     Type: String
     Default: c5.xlarge
-  
+
   AMIID:
     Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
     Description: Latest Amazon Linux 2 AMI
@@ -25,7 +25,7 @@ Parameters:
   S3BucketName:
     Type: AWS::SSM::Parameter::Value<String>
     Description: S3 bucket name to put IP and port of server
-    Default: 7days-server-ip-bucket
+    Default: 7DAYS_SERVER_IP_BUCKET
 
   PortNumber:
     Type: Number
@@ -40,18 +40,18 @@ Parameters:
   SteamUsername:
     Type: AWS::SSM::Parameter::Value<String>
     Description: Username for Steam
-    Default: steam-username
+    Default: STEAM_USERNAME
 
   SteamPassword:
     Type: AWS::SSM::Parameter::Value<String>
     Description: Password for Steam
-    Default: steam-password
+    Default: STEAM_PASSWORD
 
   ServerPassword:
     Type: AWS::SSM::Parameter::Value<String>
     Description: Password for server
-    Default: 7days-password
-  
+    Default: 7DAYS_PASSWORD
+
   WorldGenSeed:
     Type: String
     Description: Seed for random gen map
@@ -308,7 +308,7 @@ Resources:
           !Sub |
             #!/bin/bash
             set -euxo pipefail;
-            
+
             # Packages
             yum update -y;
             yum install -y expect telnet glibc.i686 libstdc++.i686 libstdc++48.i686 libgcc_s.so.1 mesa-libGLU libXcursor libXrandr;
@@ -335,7 +335,7 @@ Resources:
             IPADDRESS=$(curl http://169.254.169.254/latest/meta-data/public-ipv4);
             echo "$IPADDRESS:${PortNumber}" > 7dserver.txt;
             aws s3 cp 7dserver.txt s3://${S3BucketName};
-            
+
             # Reboot
             reboot;
 

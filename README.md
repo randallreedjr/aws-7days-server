@@ -13,10 +13,10 @@ There are three main CloudFormation templates. The EIP and EBS Volume templates 
   1. Deploy `ip.yml`
   2. Deploy `volume.yml`
   3. Ensure you have the following [SSM Parameters](https://console.aws.amazon.com/systems-manager/parameters/?region=us-east-1):
-  - `steam-username`: Username for Steam account to use
-  - `steam-password`: Password for Steam account to use
-  - `7days-password`: Password for the server itself
-  - `7days-server-ip-bucket`: An S3 bucket name to upload `7dserver.txt`, containing server IP and port in `0.0.0.0:8080` format.
+  - `STEAM_USERNAME`: Username for Steam account to use
+  - `STEAM_PASSWORD`: Password for Steam account to use
+  - `7DAYS_PASSWORD`: Password for the server itself
+  - `7DAYS_SERVER_IP_BUCKET`: An S3 bucket name to upload `7dserver.txt`, containing server IP and port in `0.0.0.0:8080` format.
   4. Deploy `instance.yml`
 
 ## Usage
